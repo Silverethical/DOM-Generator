@@ -1,0 +1,49 @@
+{
+	"name": "dom-generator",
+	"version": "0.0.0",
+	"type": "module",
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"main": "./dist/domGenerator.umd.cjs",
+	"module": "./dist/domGenerator.js",
+	"typings": "./dist/main.d.ts",
+	"keywords": [
+		"library",
+		"silverethical",
+		"ts",
+		"dom",
+		"generator",
+		"dom-generator",
+		"vanilla",
+		"js"
+	],
+	"author": "silverethical",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Silverethical/DOM-Generator.git"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/domGenerator.js",
+			"require": "./dist/domGenerator.umd.cjs"
+		}
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"typescript": "^5.0.2",
+		"vite": "^4.4.5"
+	},
+	"dependencies": {
+		"@rollup/plugin-typescript": "^11.1.6",
+		"@types/node": "^20.11.25",
+		"prettier": "^3.2.5",
+		"rollup-plugin-typescript-paths": "^1.5.0",
+		"tslib": "^2.6.2"
+	}
+}
