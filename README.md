@@ -1,22 +1,28 @@
 # DOM-Generator
 
-domGenerator allows you to generate HTML elements and organize them into a hierarchical structure according to a set of specifications.
+`dom-generator` is a versatile utility that simplifies the dynamic creation of HTML elements and the organization of a document's structure based on user-defined specifications. With a focus on ease of use and flexibility, this package allows you to effortlessly generate and manipulate HTML elements, making it a powerful tool for building dynamic and interactive web applications.
+
+## Features
+
+- **Intuitive API:** Create HTML elements with ease using a straightforward and intuitive API.
+- **Hierarchy Building:** Organize elements into a hierarchical structure using a simple and declarative syntax.
+- **Event Handling:** Easily attach event listeners to elements, enhancing interactivity in your web applications.
 
 # Usage
 
-## Install package
+## Install
 
 ```bash
 npm i dom-generator
 ```
 
-## Import domGenerator
+## Import
 
 ```js
 import domGenerator from "dom-generator";
 ```
 
-## Use domGenerator to generate a DOM structure
+## Innovate
 
 ```js
 domGenerator({
@@ -34,12 +40,12 @@ domGenerator({
 
 # Config
 
-`tag`: HTMLElement or name of an element to be created.
+- **`tag`**: HTMLElement or name of an element to be created.
 
-`attributes`: Object of attributes to be applied to the element (`element.setAttribute(key, value)`).
+- **`attributes`**: Object of attributes to be applied to the element (`element.setAttribute(key, value)`).
 
-`properties`: Object of properties to be applied to the element (`element[key] = value`).
+- **`properties`**: Object of properties to be applied to the element (`element[key] = value`).
 
-`eventListeners`: Object of eventListeners to be applied to the element (`element.addEventListener(key, value)`).
+- **`eventListeners`**: Object of eventListeners to be applied to the element (`element.addEventListener(key, value)`).
 
-`children`: Array of objects (or a single object) containing `tag`, `attributes`, `properties`, `eventListeners`, and `children`.
+- **`children`**: Array of objects (or a single object) containing `tag`, `attributes`, `properties`, `eventListeners`, and `children`.
