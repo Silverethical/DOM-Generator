@@ -41,11 +41,7 @@ domGenerator({
 # Config
 
 - **`tag`**: HTMLElement or name of an element to be created.
-
 - **`attributes`**: Object of attributes to be applied to the element (`element.setAttribute(key, value)`).
-
 - **`properties`**: Object of properties to be applied to the element (`element[key] = value`).
-
 - **`eventListeners`**: Object of eventListeners to be applied to the element (`element.addEventListener(key, value)`).
-
 - **`children`**: Array of objects (or a single object) containing `tag`, `attributes`, `properties`, `eventListeners`, and `children`.
