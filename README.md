@@ -6,19 +6,19 @@ domGenerator allows you to generate HTML elements and organize them into a hiera
 
 ## Install package
 
-```
+```bash
 npm i dom-generator
 ```
 
 ## Import domGenerator
 
-```
+```js
 import domGenerator from "dom-generator";
 ```
 
 ## Use domGenerator to generate a DOM structure
 
-```
+```js
 domGenerator({
   tag: "section",
   attributes: { class: "card" },
