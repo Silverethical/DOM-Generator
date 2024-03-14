@@ -1,6 +1,6 @@
 # DOM-Generator
 
-`dom-generator` is a versatile utility that simplifies the dynamic creation of HTML elements and the organization of a document's structure based on user-defined specifications. With a focus on ease of use and flexibility, this package allows you to effortlessly generate and manipulate HTML elements, making it a powerful tool for building dynamic and interactive web applications.
+`domGenerator` is a versatile utility that simplifies the dynamic creation of HTML elements and the organization of a document's structure based on user-defined specifications. With a focus on ease of use and flexibility, this package allows you to effortlessly generate and manipulate HTML elements, making it a powerful tool for building dynamic and interactive web applications.
 
 ## Features
 
@@ -41,8 +41,8 @@ domGenerator({
 # Config
 
 - **`tag`**: HTMLElement or name of an element to be created.
-- **`attributes`**: Object of attributes to be applied to the element (`element.setAttribute(key, value)`).
-- **`dataAttributes`**: Object of data attributes to be applied to the element (`element.dataset[key] = value`).
-- **`properties`**: Object of properties to be applied to the element (`element[key] = value`).
-- **`eventListeners`**: Object of eventListeners to be applied to the element (`element.addEventListener(key, value)`).
-- **`children`**: Array of objects (or a single object) containing `tag`, `attributes`, `properties`, `eventListeners`, and `children`.
+- **`attributes`**: Object containing attributes to be applied to the element. `domGenerator` uses `element.setAttribute(key, value)` to set these attributes. Example: `{ class: "card", id: "my-element" }`.
+- **`dataAttributes`**: Object containing data attributes to be applied to the element. Data attributes allow you to store custom data associated with an element. `domGenerator` uses `element.dataset[key] = value` to set data attributes. Example: `{ userId: "123", userName: "john_doe" }`.
+- **`properties`**: Object containing properties to be applied to the element. `domGenerator` uses `element[key] = value` to set these properties. Example: `{ textContent: "Hello World" }`.
+- **`eventListeners`**: Object containing event listeners to be applied to the element. `domGenerator` uses `element.addEventListener(key, value)` to attach event listeners. Example: `{ click: () => console.log("Clicked!") }`.
+- **`children`**: Array of objects (or a single object) containing all the above. This allows for nesting elements within each other to build complex structures.
