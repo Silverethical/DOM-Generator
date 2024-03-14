@@ -7,7 +7,8 @@ import { ElementConfigType } from "../types";
  */
 const createElement = (config: ElementConfigType): HTMLElement => {
 	// Destructure properties from the configuration object.
-	const { tag, attributes, properties, eventListeners } = config;
+	const { tag, attributes, dataAttributes, properties, eventListeners } =
+		config;
 
 	// Check if the provided tag is already an HTML element.
 	const isTagHtmlElement = tag instanceof HTMLElement;
@@ -23,11 +24,14 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 	// Create a new HTML element based on the tag provided.
 	const newEl = isTagHtmlElement ? tag : document.createElement(tag);
 
-	// Assign a shorthand variable for attributes for aesthetic purposes.
-	const attrs = attributes;
+	// Assign a shorthand variable for attributes and dataAttributes for aesthetic purposes.
+	const [attrs, dAttrs] = [attributes, dataAttributes];
 
 	// Set attributes on the new element.
 	for (const name in attrs) (newEl as any).setAttribute(name, attrs[name]);
+
+	// Set data attributes on the new element.
+	for (const name in dAttrs) (newEl as any).dataset[name] = dAttrs[name];
 
 	// Set properties on the new element.
 	for (const name in properties) (newEl as any)[name] = properties[name];

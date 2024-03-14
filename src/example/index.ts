@@ -12,6 +12,7 @@ setupCounter(counterButton as HTMLButtonElement);
 
 const counterSectionConfig: ElementConfigType = {
 	tag: "section",
+	dataAttributes: { myPurpose: "showcase" },
 	children: [
 		{
 			tag: "h1",
