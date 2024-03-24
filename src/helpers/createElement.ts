@@ -24,26 +24,48 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 	// Create a new HTML element based on the tag provided.
 	const newEl = isTagHtmlElement ? tag : document.createElement(tag);
 
-	// Assign a shorthand variable for attributes and dataAttributes for aesthetic purposes.
-	const [attrs, dAttrs] = [attributes, dataAttributes];
+	// Check if 'attributes' is an object and set attributes on the new element.
+	if (!(attributes instanceof Object)) {
+		console.warn("Skipping 'attributes' since it is not an object.");
+	} else {
+		for (const name in attributes) {
+			(newEl as any).setAttribute(name, attributes[name]);
+		}
+	}
 
-	// Set attributes on the new element.
-	for (const name in attrs) (newEl as any).setAttribute(name, attrs[name]);
+	// Check if 'dataAttributes' is an object and set data attributes on the new element.
+	if (!(dataAttributes instanceof Object)) {
+		console.warn("Skipping 'dataAttributes' since it is not an object.");
+	} else {
+		for (const name in dataAttributes) {
+			(newEl as any).dataset[name] = dataAttributes[name];
+		}
+	}
 
-	// Set data attributes on the new element.
-	for (const name in dAttrs) (newEl as any).dataset[name] = dAttrs[name];
+	// Check if 'properties' is an object and set properties on the new element.
+	if (!(properties instanceof Object)) {
+		console.warn("Skipping 'properties' since it is not an object.");
+	} else {
+		for (const name in properties) (newEl as any)[name] = properties[name];
+	}
 
-	// Set properties on the new element.
-	for (const name in properties) (newEl as any)[name] = properties[name];
+	// Check if 'eventListeners' is an object and add event listeners to the new element.
+	if (!(eventListeners instanceof Object)) {
+		console.warn("Skipping 'eventListeners' since it is not an object.");
+	} else {
+		for (const name in eventListeners) {
+			const handler = eventListeners[name];
 
-	// Add event listeners to the new element.
-	for (const name in eventListeners) {
-		const handler = eventListeners[name];
+			// Check if the handler is a function before adding the event listener.
+			if (typeof handler !== "function") {
+				console.warn(
+					`Skipping '${name}' handler, since it is not a function.`
+				);
+				continue;
+			}
 
-		// Check if the handler is a function before adding the event listener.
-		if (typeof handler !== "function") continue;
-
-		newEl.addEventListener(name, handler);
+			newEl.addEventListener(name, handler);
+		}
 	}
 
 	// Return the created HTML element.
