@@ -25,7 +25,7 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 	const newEl = isTagHtmlElement ? tag : document.createElement(tag);
 
 	// Check if 'attributes' is an object and set attributes on the new element.
-	if (!(attributes instanceof Object)) {
+	if (attributes && !(attributes instanceof Object)) {
 		console.warn("Skipping 'attributes' since it is not an object.");
 	} else {
 		for (const name in attributes) {
@@ -34,7 +34,7 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 	}
 
 	// Check if 'dataAttributes' is an object and set data attributes on the new element.
-	if (!(dataAttributes instanceof Object)) {
+	if (dataAttributes && !(dataAttributes instanceof Object)) {
 		console.warn("Skipping 'dataAttributes' since it is not an object.");
 	} else {
 		for (const name in dataAttributes) {
@@ -43,14 +43,14 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 	}
 
 	// Check if 'properties' is an object and set properties on the new element.
-	if (!(properties instanceof Object)) {
+	if (properties && !(properties instanceof Object)) {
 		console.warn("Skipping 'properties' since it is not an object.");
 	} else {
 		for (const name in properties) (newEl as any)[name] = properties[name];
 	}
 
 	// Check if 'eventListeners' is an object and add event listeners to the new element.
-	if (!(eventListeners instanceof Object)) {
+	if (eventListeners && !(eventListeners instanceof Object)) {
 		console.warn("Skipping 'eventListeners' since it is not an object.");
 	} else {
 		for (const name in eventListeners) {
