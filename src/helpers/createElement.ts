@@ -25,34 +25,32 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 	const newEl = isTagHtmlElement ? tag : document.createElement(tag);
 
 	// Check if 'attributes' is an object and set attributes on the new element.
-	if (attributes && !(attributes instanceof Object)) {
-		console.warn("Skipping 'attributes' since it is not an object.");
-	} else {
+	if (attributes instanceof Object) {
 		for (const name in attributes) {
 			(newEl as any).setAttribute(name, attributes[name]);
 		}
+	} else if (attributes) {
+		console.warn("Skipping 'attributes' since it is not an object.");
 	}
 
 	// Check if 'dataAttributes' is an object and set data attributes on the new element.
-	if (dataAttributes && !(dataAttributes instanceof Object)) {
-		console.warn("Skipping 'dataAttributes' since it is not an object.");
-	} else {
+	if (dataAttributes instanceof Object) {
 		for (const name in dataAttributes) {
 			(newEl as any).dataset[name] = dataAttributes[name];
 		}
+	} else if (dataAttributes) {
+		console.warn("Skipping 'dataAttributes' since it is not an object.");
 	}
 
 	// Check if 'properties' is an object and set properties on the new element.
-	if (properties && !(properties instanceof Object)) {
-		console.warn("Skipping 'properties' since it is not an object.");
-	} else {
+	if (properties instanceof Object) {
 		for (const name in properties) (newEl as any)[name] = properties[name];
+	} else if (properties) {
+		console.warn("Skipping 'properties' since it is not an object.");
 	}
 
 	// Check if 'eventListeners' is an object and add event listeners to the new element.
-	if (eventListeners && !(eventListeners instanceof Object)) {
-		console.warn("Skipping 'eventListeners' since it is not an object.");
-	} else {
+	if (eventListeners instanceof Object) {
 		for (const name in eventListeners) {
 			const handler = eventListeners[name];
 
@@ -66,6 +64,8 @@ const createElement = (config: ElementConfigType): HTMLElement => {
 
 			newEl.addEventListener(name, handler);
 		}
+	} else if (eventListeners) {
+		console.warn("Skipping 'eventListeners' since it is not an object.");
 	}
 
 	// Return the created HTML element.
